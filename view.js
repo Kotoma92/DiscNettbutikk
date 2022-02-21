@@ -5,7 +5,7 @@ function createDiscView(y) {
 		discView += `
         <div onclick="choosenDisc(${i})" id="discBox${i}" class="discBox">
             <div>${disc.name}</div>
-            <img class="discImage" src="/discbilder/${disc.image}" />
+            <img class="discImage" src="./discbilder/${disc.image}" />
             <div>${disc.spec}</div>
         </div>
         
@@ -31,7 +31,7 @@ function showDisc(disc) {
     <button onclick="showView()">Home</button> <button onclick="toCart(disc)">Legg i Handlevogn</button>
     <div class="chosenDiscView">
     <div>${disc.name}</div>
-    <img class="singleDisk" src="/discbilder/${disc.image}" />
+    <img class="singleDisk" src="./discbilder/${disc.image}" />
     <div>Spec: ${disc.spec}</div>
     <div>Vekt: ${disc.weight}</div>    
     </div>
