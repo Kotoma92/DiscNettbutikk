@@ -1,16 +1,27 @@
 function choosenDisc(i) {
-	disc = discs[i];
-	console.log(disc);
-	showDisc(disc);
+	discFromArray = discArray[i];
+	console.log(discFromArray);
+	showDisc(discFromArray);
 }
 
 function toCart(disc) {
-	cart.push(disc);
-	showView();
+	if (disc.stock > 0) {
+		cart.push(disc);
+		disc.stock--;
+		priceTotal += disc.price;
+		undoClicked = false;
+		showView();
+	} else {
+		showNoStock();
+	}
+	discClicked = true;
 }
 
-function undo() {
+function undo(disc) {
+	disc.stock++;
+	priceTotal -= disc.price;
 	cart.splice(-1);
+	undoClicked = true;
 	showView();
 }
 
@@ -19,6 +30,12 @@ function buyDisks() {
 }
 
 function undoAll() {
+	cart.forEach((disc) => {
+		disc.stock++;
+	});
+	priceTotal = 0;
 	cart = [];
+	undoClicked = true;
+	discClicked = false;
 	showUndoAll();
 }

@@ -7,6 +7,8 @@ function createDiscView(y) {
             <div>${disc.name}</div>
             <img class="discImage" src="./discbilder/${disc.image}" />
             <div>${disc.spec}</div>
+            <div>Pris: ${disc.price},-</div>
+            <div>Lager: ${disc.stock}</div>
         </div>
         `;
 	}
@@ -14,23 +16,30 @@ function createDiscView(y) {
 
 showView();
 function showView() {
-	createDiscView(discs);
+	createDiscView(discArray);
 	document.getElementById('app').innerHTML = /*HTML*/ `
-    <button onclick="buyDisks()">Kjøp disker</button> <button onclick="undo()">Angre forrige</button>
-    <div>Du har: ${cart.length} disker i handlevognen</div>
+    <button onclick="buyDisks()">Kjøp disker</button> <button ${
+			undoClicked ? 'hidden' : ''
+		} onclick="undo(discFromArray)">Angre forrige</button>
+    <button onclick="showCart()">Se Handlevogn</button>
+    <div>Du har: ${
+			cart.length
+		} disker i handlevognen til den nette sum av ${priceTotal},-.</div>
     <div class="discContainer">${discView}</div><br>
     `;
 }
 
-function showDisc(disc) {
+function showDisc(discFromArray) {
 	document.getElementById('app').innerHTML = /*HTML*/ `
     <button onclick="showView()">Hjem</button><br>
-    <button onclick="toCart(disc)">Legg i Handlevogn</button>
+    <button onclick="toCart(discFromArray)">Legg i Handlevogn</button>
     <div class="chosenDiscView">
-    <div>${disc.name}</div>
-    <img class="singleDisk" src="./discbilder/${disc.image}" />
-    <div>Spec: ${disc.spec}</div>
-    <div>Vekt: ${disc.weight}</div>    
+    <div>${discFromArray.name}</div>
+    <div>Pris: ${discFromArray.price},-</div>
+    <img class="singleDisk" src="./discbilder/${discFromArray.image}" />
+    <div>Spec: ${discFromArray.spec}</div>
+    <div>Vekt: ${discFromArray.weight}</div>
+    <div>På lager: ${discFromArray.stock}</div>
     </div>
     `;
 }
@@ -38,10 +47,10 @@ function showDisc(disc) {
 function showBoughtDisks() {
 	createDiscView(cart);
 	document.getElementById('app').innerHTML = /*HTML*/ `
-    <button onclick="location.href = 'https://www.youtube.com/watch?v=Gc2u6AFImn8';" >Ut av butikken</button> <button onclick="undoAll()">Angre kjøpet</button>
+    <button onclick="location.href = 'https://www.youtube.com/watch?v=Gc2u6AFImn8';" >Ut av butikken</button> <button onclick="showView()">Hjem</button>
     <div>Du har kjøpt: ${
 			cart ? cart.length : ''
-		} disker, takk for handelen!</div>
+		} disker til en pris av ${priceTotal},-, takk for handelen!</div>
     <div class="discContainer">${discView}</div><br>
     `;
 }
@@ -50,5 +59,23 @@ function showUndoAll() {
 	document.getElementById('app').innerHTML = /*HTML*/ `
     <button onclick="showView()">Hjem</button>
     <div>Du har angret kjøpet</div>
+    `;
+}
+
+function showNoStock() {
+	document.getElementById('app').innerHTML = /*HTML*/ `
+    <button onclick="showView()">Hjem</button>
+    <div>Denne disken er ikke på lager</div>
+    `;
+}
+
+function showCart() {
+	createDiscView(cart);
+	document.getElementById('app').innerHTML = /*HTML*/ `
+    <button onclick="buyDisks()">Kjøp Disker</button> 
+    <button onclick="undoAll()">Tøm Handlevogn</button>
+    <div>Du har: ${cart ? cart.length : ''} disker i handlevognen!</div>
+    <div>Pris på disker i handlevogn: ${priceTotal},-</div>
+    <div class="discContainer">${discView}</div><br>
     `;
 }
