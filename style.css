@@ -26,6 +26,8 @@ html {
 }
 
 .singleDisk {
-	height: 500px;
+	height: auto;
 	width: 500px;
+	max-width: 100%;
+	max-height: auto;
 }
