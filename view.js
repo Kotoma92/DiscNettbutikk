@@ -17,7 +17,7 @@ function showView() {
 	createDiscView(discs);
 	document.getElementById('app').innerHTML = /*HTML*/ `
     <button onclick="buyDisks()">Kjøp disker</button> <button onclick="undo()">Angre forrige</button>
-    <div>Du har: ${cart ? cart.length : ''} disker i handlevognen</div>
+    <div>Du har: ${cart.length} disker i handlevognen</div>
     <div class="discContainer">${discView}</div><br>
     `;
 }
