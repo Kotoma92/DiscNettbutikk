@@ -11,6 +11,7 @@ html {
 .discContainer {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 .discBox {
