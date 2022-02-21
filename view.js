@@ -42,7 +42,7 @@ function showDisc(disc) {
 function showBoughtDisks() {
 	createDiscView(cart);
 	document.getElementById('app').innerHTML = /*HTML*/ `
-    <button onclick="undoAll()">Angre kjøpet</button>
+    <button onclick="undoAll()">Angre kjøpet</button><button onclick="location.href = 'https://www.youtube.com/watch?v=Gc2u6AFImn8';" >Ut av butikken</button>
     <div>Du har kjøpt: ${
 			cart ? cart.length : ''
 		} disker, takk for handelen!</div>
