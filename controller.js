@@ -14,7 +14,6 @@ function toCart(disc) {
 	} else {
 		showNoStock();
 	}
-	discClicked = true;
 }
 
 function undo(disc) {
@@ -36,6 +35,5 @@ function undoAll() {
 	priceTotal = 0;
 	cart = [];
 	undoClicked = true;
-	discClicked = false;
 	showUndoAll();
 }

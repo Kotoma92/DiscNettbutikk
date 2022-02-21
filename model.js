@@ -1,7 +1,6 @@
 var discView = '';
 var priceTotal = 0;
 var undoClicked = true;
-var discClicked = false;
 var cart = [];
 const discArray = [
 	{
