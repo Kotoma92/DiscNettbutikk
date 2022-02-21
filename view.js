@@ -47,10 +47,10 @@ function showDisc(discFromArray) {
 function showBoughtDisks() {
 	createDiscView(cart);
 	document.getElementById('app').innerHTML = /*HTML*/ `
-    <button onclick="location.href = 'https://www.youtube.com/watch?v=Gc2u6AFImn8';" >Ut av butikken</button> <button onclick="showView()">Hjem</button>
+    <button onclick="location.href = 'https://www.youtube.com/watch?v=Gc2u6AFImn8';" >Ut av butikken</button> <button onclick="window.location.reload()">Hjem</button>
     <div>Du har kjøpt: ${
 			cart ? cart.length : ''
-		} disker til en pris av ${priceTotal},-, takk for handelen!</div>
+		} disker til en pris av ${priceTotal},-, <br>men siden du ikke får betalt så ikke forvent noen disker heller!</div>
     <div class="discContainer">${discView}</div><br>
     `;
 }
